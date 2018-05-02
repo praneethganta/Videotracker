@@ -44,9 +44,23 @@ module.exports = function(app) {
         var form = new formidable.IncomingForm();
         form.parse(req, function (err, fields, files) {
             form.uploadDir = path.join(__dirname, '/uploads');
-            fs.rename(files.uploadFile.path, path.join(form.uploadDir, files.uploadFile.name), function (err) {
+            fs.readFile(files.uploadFile.path, function (err, data) {
                 if (err) throw err;
-                res.end("success");
+                console.log('File read!');
+
+                // Write the file
+                fs.writeFile(path.join(form.uploadDir, files.uploadFile.name), data, function (err) {
+                    if (err) throw err;
+                    res.write('File uploaded and moved!');
+                    res.end();
+                    console.log('File written!');
+                });
+
+                // Delete the file
+                fs.unlink(files.uploadFile.path, function (err) {
+                    if (err) throw err;
+                    console.log('File deleted!');
+                });
             });
 
         });
