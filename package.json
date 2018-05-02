@@ -1,11 +1,9 @@
 {
-  "name": "behavioral-monitoring-tool",
+  "name": "VideoTracer",
   "version": "1.5.0",
   "description": "A template which helps user to login and view his login activity",
   "engines": {
-    "node": "6.11.2",
-    "npm": "5.2.0",
-    "yarn": "0.27.5"
+    "node": "8.x.x"
   },
   "author": "Praneeth Ganta",
   "website": {
@@ -16,29 +14,20 @@
     "url": ""
   },
   "dependencies": {
-    "bcrypt": "^1.0.3",
-    "body-parser": "1.14.1",
-    "bower": "^1.8.2",
-    "connect-mongo": "0.8.2",
-    "cookie-parser": "1.4.0",
-    "ejs": "^2.5.7",
-    "elasticsearch": "^14.0.0",
-    "emailjs": "^1.0.4",
-    "errorhandler": "1.4.2",
-    "express": "4.13.3",
-    "express-session": "1.11.3",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.9",
+    "elasticsearch": "^14.2.2",
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
     "formidable": "^1.2.1",
-    "jade": "1.11.0",
-    "mathjs": "^3.17.0",
-    "mongodb": "2.0.45",
-    "morgan": "^1.9.0",
-    "pg": "^7.3.0",
-    "python-shell": "^0.4.0",
     "q3": "^0.1.6",
-    "stylus": "0.52.4"
+    "stylus": "^0.52.4"
   },
   "main": "app.js",
   "scripts": {
+    "deploy": "gcloud app deploy",
     "start": "node app.js"
   },
   "homepage": "",
