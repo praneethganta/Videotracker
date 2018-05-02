@@ -49,9 +49,9 @@ $('#upload-input').on('change', function(){
                         // once the upload reaches 100%, set the progress bar text to done
                         if (percentComplete === 100) {
                             $('.progress-bar').html('Done');
-                            setTimeout(function(){
+                           /* setTimeout(function(){
                                 location.reload();
-                            }, 6000);
+                            }, 6000);*/
                         }
 
                     }
