@@ -2,7 +2,6 @@
 
 
 
-const bcrypt = require('bcrypt');
 
 exports.getUserDetails = function(user, callback) {
 
