@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="css/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .required-asterisk {
+            color: red;
+        }
+
+        i {
+            font-size: 10px;
+            ;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Sign Up</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <% if (error !== "") { %>
+                        <div class="alert alert-danger text-center" role="alert" id="error"></div>
+                    <% } %>
+                    <script>
+                        var error = "<%= error %>";
+                        if(error === "Username is already taken. Please try again." || error === ""){
+                            console.log(error);
+                            document.getElementById("error").innerHTML = error;
+                        }
+                        else {
+                            alert(error + ". Please Click ok to Login.");
+                            window.location.href = "/"
+                        }
+
+                    </script>
+                    <form role="form" id="signupForm" action="/signup" method="post">
+                        <fieldset form="signupForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name <span class="required-asterisk">*</span></label>
+                                        <input class="form-control" id="firstName" placeholder="John" name="firstName" type="text" autofocus required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name <span class="required-asterisk">*</span></label>
+                                        <input class="form-control" id="lastName" placeholder="Wick" name="lastName" type="text" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="username">Username <span class="required-asterisk">*</span><i> (Alpha-Numeric only!)</i></label>
+                                <input class="form-control" id="username" placeholder="boogieman123" name="username" type="text" required>
+                                <h5 id="usernameAlphaNum"></h5>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="password">Password <span class="required-asterisk">*</span></label>
+                                        <input class="form-control" id="password" placeholder="******" name="password" type="password" value="" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="password2">Re-Enter Password <span class="required-asterisk">*</span></label>
+                                        <input class="form-control" id="password2" placeholder="******" name="password2" type="password" value="" required>
+                                        <h5 id="passwordMismatch"></h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender <span class="required-asterisk">*</span></label>
+                                <select class="form-control" id="gender" name="gender" required>
+                                    <option disabled selected value> -- Select an option -- </option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age">Age <span class="required-asterisk">*</span></label>
+                                <input class="form-control" id="age" placeholder="18" name="age" type="number" min="10" max="100" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="javaProficiency">Proficiency in Java <span class="required-asterisk">*</span></label>
+                                <select class="form-control" id="javaProficiency" name="javaProficiency" required>
+                                    <option disabled selected value> -- Select an option -- </option>
+                                    <option>Beginner</option>
+                                    <option>Intermediate</option>
+                                    <option>Advanced</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="knownTopics">Topics Known in Java <span class="required-asterisk">*</span></label>
+                                <select multiple class="form-control" id="knownTopics" name="knownTopics" required>
+                                    <option value="Arrays">Arrays</option>
+                                    <option value="2D_Arrays">2D Arrays</option>
+                                    <option value="Arithmetics">Arithmetic</option>
+                                    <option value="Classes">Classes</option>
+                                    <option value="Constructor">Constructor</option>
+                                    <option value="Control">Control</option>
+                                    <option value="DataType">Data Types</option>
+                                    <option value="Decisions">Decisions</option>
+                                    <option value="Expression">Expressions</option>
+                                    <option value="InputOutput">Input-Output</option>
+                                    <option value="Java">Java Basics</option>
+                                    <option value="Loops">Loops</option>
+                                    <option value="Method">Methods</option>
+                                    <option value="Objects">Objects</option>
+                                    <option value="Operator">Operators</option>
+                                    <option value="Primitive Data Type">Primitive Data Types</option>
+                                    <option value="Strings">Strings</option>
+                                    <option value="Variables">Variables</option>
+                                </select>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="academicExperience">Academic Experience <span class="required-asterisk">*</span></label>
+                                        <select class="form-control" id="academicExperience" name="academicExperience" required>
+                                            <option disabled selected value> -- Select an option -- </option>
+                                            <option>0 - 2 years</option>
+                                            <option>2 - 6 years</option>
+                                            <option>6+ years</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="professionalExperience">Professional Experience <span class="required-asterisk">*</span></label>
+                                        <select class="form-control" id="professionalExperience" name="professionalExperience" required>
+                                            <option disabled selected value> -- Select an option -- </option>
+                                            <option>0 - 2 years</option>
+                                            <option>2 - 6 years</option>
+                                            <option>6+ years</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="educationLevel">Highest Level of Education Completed <span class="required-asterisk">*</span></label>
+                                <select class="form-control" id="educationLevel" name="educationLevel" required>
+                                    <option disabled selected value> -- Select an option -- </option>
+                                    <option>High School Graduate</option>
+                                    <option>Associate Degree</option>
+                                    <option>Bachelor's Degree</option>
+                                    <option>Master's Degree</option>
+                                </select>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="universityName">Current University <span class="required-asterisk">*</span></label>
+                                        <input class="form-control" id="universityName" placeholder="Arizona State University" name="universityName" type="text" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="universityLocation">University Location <span class="required-asterisk">*</span></label>
+                                        <input class="form-control" id="universityLocation" placeholder="Tempe, AZ" name="universityLocation" type="text" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-lg btn-success btn-block">Signup</button>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="panel-heading">
+                    <p class="panel-title">Already have an account? <a href="/" style="color: lightseagreen">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+</div>
+
+<!-- jQuery -->
+<script src="js/vendor/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/vendor/bootstrap.min.js"></script>
+
+<script>
+    $("document").ready(function () {
+        var passwordMatch = false;
+        $('#password, #password2').on('keyup', function () {
+            if ($('#password').val() === $('#password2').val()) {
+                $('#passwordMismatch').html('Passwords match!').css('color', 'green');
+                passwordMatch = true;
+            } else {
+                $('#passwordMismatch').html('Passwords do not match!').css('color', 'red');
+                passwordMatch = false;
+            }
+        });
+
+        var usernameAlphaNum = false;
+        $('#username').on('keyup', function () {
+            if (/^([a-zA-Z0-9]+)$/.test($('#username').val())) {
+                $('#usernameAlphaNum').html('Username is OK!').css('color', 'green');
+                usernameAlphaNum = true;
+            } else {
+                $('#usernameAlphaNum').html('Please stick to alpha-numeric values in username').css('color', 'red');
+                usernameAlphaNum = false;
+            }
+        });
+
+        $('form').on('submit', function () {
+            return passwordMatch;
+        });
+    });
+</script>
+
+</body>
+
+</html>
